@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\DebugSession;
+use \App\Dragon;
 use Session;
 use Redirect;
 
@@ -76,7 +77,12 @@ class SessionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(isset($request['dragon']))
+        {
+          $session = DebugSession::find($id);
+          $session->dragons()->syncWithoutDetaching(Dragon::inRandomOrder()->first());
+        }
+        return Redirect::to('session/'.$id);
     }
 
     /**

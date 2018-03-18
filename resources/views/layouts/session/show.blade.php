@@ -5,6 +5,14 @@ Dragon Debugging -- {{ $session->problem }}
 @endsection
 
 @section('content')
+<form action="/session/{{ $session->id }}" method="post">
+  {{ csrf_field() }}
+  {{ method_field('PATCH') }}
+  <div class="form-group">
+    <input name="dragon" type="hidden" value="1">
+    <button type="submit" class="btn btn-primary">Add Dragon</button>
+  </div>
+</form>
   <div class="dragons">
   @foreach($session->dragons as $dragon)
     <div class="dragon">{{ $dragon->name }}</div>
