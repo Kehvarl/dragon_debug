@@ -51,6 +51,10 @@
                 text-align: center;
             }
 
+            .content_body {
+                text-align: left;
+            }
+
             .title {
                 font-size: 84px;
             }
@@ -78,7 +82,7 @@
                     Dragon Debugging
                   @show
                 </div>
-                <div>
+                <div class="content_body">
                   @yield('content')
                 </div>
             </div>

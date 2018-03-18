@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/', 'SessionController@index');
+//Route::get('/session', 'SessionController@index');
+//Route::get('/session/{session}', 'SessionController@show');
+//Route::post('/session', 'SessionController@create');
+Route::resource('session', 'SessionController');

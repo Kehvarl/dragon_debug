@@ -14,7 +14,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-        return view('layouts/session/session', ['sessions' => Session::get()]);
+        return view('layouts/session/index', ['sessions' => Session::get()]);
     }
 
     /**
@@ -35,7 +35,11 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $session = new Session();
+        $session->problem = $request['problem'];
+        $session->save();
+
+        //return Redirect::to('session');
     }
 
     /**
@@ -46,7 +50,7 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('layouts/session/show', ['session' => Session::find($id)]);
     }
 
     /**
