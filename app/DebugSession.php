@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Session extends Model
+class DebugSession extends Model
 {
+  protected $table = "sessions";
 
   /**
    * The attributes that are mass assignable.
@@ -15,7 +16,7 @@ class Session extends Model
   protected $fillable = [
       'problem',
   ];
-  
+
   public function dragons()
   {
     return $this->belongsToMany(
@@ -26,6 +27,6 @@ class Session extends Model
 
   public function messages()
   {
-    return $this->hasMany(Message::Class);
+    return $this->hasMany(DebugMessage::Class);
   }
 }

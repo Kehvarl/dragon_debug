@@ -18,7 +18,7 @@ class Dragon extends Model
   public function sessions()
   {
     return $this->belongsToMany(
-      Session::Class,
+      DebugSession::Class,
       'session_dragon'
     );
   }

@@ -15,7 +15,7 @@
     </li>
   @endforeach
 </ul>
-<form target="/session" method="post">
+<form action="/session" method="post">
   {{ csrf_field() }}
   <div class="form-group">
     <input type="text" id="problem" name="problem" placeholder="New Problem Statement">

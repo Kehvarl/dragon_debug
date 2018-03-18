@@ -49,6 +49,7 @@
 
             .content {
                 text-align: center;
+                margin-left: 5%;
             }
 
             .content_body {

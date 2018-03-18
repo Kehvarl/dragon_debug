@@ -15,7 +15,7 @@ class CreateSessionDragonsTable extends Migration
     {
         Schema::create('session_dragon', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('session_id');
+            $table->integer('debug_session_id');
             $table->integer('dragon_id');
             $table->timestamps();
         });

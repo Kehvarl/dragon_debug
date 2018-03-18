@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class DebugMessage extends Model
 {
+  protected $table = "messages";
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +19,6 @@ class Message extends Model
 
     public function session()
     {
-      return $this->belongsTo(Session::Class);
+      return $this->belongsTo(DebugSession::Class);
     }
 }

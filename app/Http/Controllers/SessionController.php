@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Session;
+use \App\DebugSession;
+use Session;
+use Redirect;
 
 class SessionController extends Controller
 {
@@ -14,7 +16,7 @@ class SessionController extends Controller
      */
     public function index()
     {
-        return view('layouts/session/index', ['sessions' => Session::get()]);
+        return view('layouts/session/index', ['sessions' => DebugSession::get()]);
     }
 
     /**
@@ -35,11 +37,12 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        $session = new Session();
+        $session = new DebugSession();
         $session->problem = $request['problem'];
         $session->save();
 
-        //return Redirect::to('session');
+        Session::flash("flash_message", "Session succesfully added");
+        return Redirect::to('session');
     }
 
     /**
@@ -50,7 +53,7 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        return view('layouts/session/show', ['session' => Session::find($id)]);
+        return view('layouts/session/show', ['session' => DebugSession::find($id)]);
     }
 
     /**
