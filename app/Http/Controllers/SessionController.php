@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\DebugSession;
+use \App\DebugMessage;
 use \App\Dragon;
 use Session;
 use Redirect;
@@ -82,6 +83,13 @@ class SessionController extends Controller
           $session = DebugSession::find($id);
           $session->dragons()->syncWithoutDetaching(Dragon::inRandomOrder()->first());
         }
+        elseif (isset($request['text']))
+        {
+          $session = DebugSession::find($id);
+          $message = new DebugMessage();
+          $message->text = $request['text'];
+          $session->messages()->save($message);
+        }
         return Redirect::to('session/'.$id);
     }
 
@@ -93,6 +101,7 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DebugSession::destroy($id);
+        return Redirect::to('session');
     }
 }

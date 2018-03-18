@@ -20,7 +20,28 @@ Dragon Debugging -- {{ $session->problem }}
   </div>
   <div class="messages">
   @foreach($session->messages as $message)
-    <div class="message">{{ $message->text }} <span class="message_timestamp">{{ $message->created_at }}</span></div>
+    <div class="message">
+      {{ $message->text }}
+      <span class="message_timestamp" style="font-size:.5em;">
+        {{ $message->created_at->diffForHumans() }}
+      </span>
+    </div>
   @endforeach
+  <form action="/session/{{ $session->id }}" method="post">
+    {{ csrf_field() }}
+    {{ method_field('PATCH') }}
+    <input name="message" type="hidden" value="1">
+    <div class="form-group">
+      <textarea name="text" autofocus></textarea>
+      <button type="submit" class="btn btn-primary">Debug</button>
+    </div>
+  </form>
   </div>
+  <form action="/session/{{ $session->id }}" method="post">
+    {{ csrf_field() }}
+    {{ method_field('DELETE') }}
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">Delete Session</button>
+    </div>
+  </form>
 @endsection
