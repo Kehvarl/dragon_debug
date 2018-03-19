@@ -15,3 +15,4 @@
 //Route::get('/session/{session}', 'SessionController@show');
 //Route::post('/session', 'SessionController@create');
 Route::resource('session', 'SessionController');
+Route::resource('dragon', 'DragonController');
